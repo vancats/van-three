@@ -7,6 +7,7 @@ specifiers:
   clean-webpack-plugin: ^4.0.0
   copy-webpack-plugin: ^10.2.4
   css-loader: ^6.5.1
+  dat.gui: ^0.7.9
   file-loader: ^6.2.0
   gsap: ^3.9.1
   html-loader: ^3.1.0
@@ -17,7 +18,7 @@ specifiers:
   portfinder-sync: 0.0.2
   raw-loader: ^4.0.2
   style-loader: ^3.3.1
-  three: ^0.137.5
+  three: ^0.122.0
   webpack: ^5.68.0
   webpack-cli: ^4.9.2
   webpack-dev-server: ^4.7.3
@@ -30,6 +31,7 @@ dependencies:
   clean-webpack-plugin: 4.0.0_webpack@5.75.0
   copy-webpack-plugin: 10.2.4_webpack@5.75.0
   css-loader: 6.7.3_webpack@5.75.0
+  dat.gui: 0.7.9
   file-loader: 6.2.0_webpack@5.75.0
   gsap: 3.11.4
   html-loader: 3.1.2_webpack@5.75.0
@@ -40,7 +42,7 @@ dependencies:
   portfinder-sync: 0.0.2
   raw-loader: 4.0.2_webpack@5.75.0
   style-loader: 3.3.1_webpack@5.75.0
-  three: 0.137.5
+  three: 0.122.0
   webpack: 5.75.0_webpack-cli@4.10.0
   webpack-cli: 4.10.0_uaydpeuxkjjcxdbyfgk36cjdxi
   webpack-dev-server: 4.11.1_pda42hcaj7d62cr262fr632kue
@@ -2045,6 +2047,10 @@ packages:
     hasBin: true
     dev: false
 
+  /dat.gui/0.7.9:
+    resolution: {integrity: sha512-sCNc1OHobc+Erc1HqiswYgHdVNpSJUlk/Hz8vzOCsER7rl+oF/4+v8GXFUyCgtXpoCX6+bnmg07DedLvBLwYKQ==}
+    dev: false
+
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -3912,8 +3918,8 @@ packages:
       source-map-support: 0.5.21
     dev: false
 
-  /three/0.137.5:
-    resolution: {integrity: sha512-rTyr+HDFxjnN8+N/guZjDgfVxgHptZQpf6xfL/Mo7a5JYIFwK6tAq3bzxYYB4Ae0RosDZlDuP+X5aXDXz+XnHQ==}
+  /three/0.122.0:
+    resolution: {integrity: sha512-bgYMo0WdaQhf7DhLE8OSNN/rVFO5J4K1A2VeeKqoV4MjjuHjfCP6xLpg8Xedhns7NlEnN3sZ6VJROq19Qyl6Sg==}
     dev: false
 
   /thunky/1.1.0:
