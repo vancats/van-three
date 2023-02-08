@@ -125,12 +125,6 @@ window.addEventListener('mousemove', (e) => {
 })
 
 const tick = () => {
-    /// 手动模拟相机位移
-    // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
-    // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
-    // camera.position.y = cursor.y * 3
-    // camera.lookAt(group.position)
-
     // 如果使用了 damping，必须要在这里更新
     controls.update()
 
