@@ -3,14 +3,34 @@ body {
     padding: 0;
 }
 
-html,
+html {
+    background: #1e1a20;
+}
+
+/* html,
 body {
     overflow: hidden;
-}
+} */
 
 #webgl {
     position: fixed;
     left: 0;
     top: 0;
     outline: none;
+}
+
+.section {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    padding: 0 10%;
+    font-family: 'Cabin', sans-serif;
+    color: #ffeded;
+    align-items: center;
+    font-size: 7vmin;
+    text-transform: uppercase;
+}
+
+section:nth-child(odd) {
+    justify-content: flex-end;
 }
