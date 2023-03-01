@@ -107,7 +107,13 @@ const defaultContactMaterial = new CANNON.ContactMaterial(
     }
 )
 world.addContactMaterial(defaultContactMaterial)
+// 为所有的物体设置初始材质
 world.defaultContactMaterial = defaultContactMaterial
+/**
+ * NativeBroadphase 原生的碰撞检测方式
+ * GridBroadphase 将整体分为多个网格，只会测试当前与四周的，性能好，但是如果有快速运动的物体，可能无法检测准确
+ * SAPBroadphase Sweep And Prune 在多个步骤中，任意轴上测试物体，但是如果物体快速移动但是不碰撞的情况，会出现问题
+ */
 world.broadphase = new CANNON.SAPBroadphase(world)
 world.allowSleep = true // sleepSpeedLimit 这个属性可以设置速度限制，但是大多时候不需要设置它
 
@@ -121,6 +127,13 @@ floorBody.addShape(floorShape)
 // 绕某个矢量旋转
 floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5)
 world.addBody(floorBody)
+
+
+/// Forces
+// apply force 指定一个点给一个力，比如风，多米诺，愤怒小鸟
+// apply force 类似上条，但是不是添加力，而是通过添加力来添加速率
+// apply local force 类似，但是坐标在物体的内部
+// apply local force 同
 
 
 const objectsToUpdate = []
@@ -185,6 +198,26 @@ const createBox = (width, height, depth, position) => {
 
     objectsToUpdate.push({ mesh, body })
 }
+
+
+/// Constrains
+// HingeConstraint 门锁
+// DistanceConstraint 物体间保持同距离
+// LockConstraint 物体被锁住，是一个整体
+// PointToPointConstraint 将物体粘在特定的点上
+
+/// Worker
+// 所有的物理计算都在CPU中，我们可以把它放到 worker 中：javascript/worker
+
+// cannon-es
+// npm install --save cannon-es@0.15.1
+// import * as CANNON form 'cannon-es'
+
+// Ammo.js
+// WebAssembly support
+
+// Physijs
+// 使用 Ammo.js 并原生支持 worker
 
 /// Debug
 const gui = new dat.GUI()

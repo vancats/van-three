@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.16.12
   '@babel/preset-env': ^7.16.11
   babel-loader: ^8.2.3
+  cannon: ^0.6.2
   clean-webpack-plugin: ^4.0.0
   copy-webpack-plugin: ^10.2.4
   css-loader: ^6.5.1
@@ -29,6 +30,7 @@ dependencies:
   '@babel/core': 7.20.12
   '@babel/preset-env': 7.20.2_@babel+core@7.20.12
   babel-loader: 8.3.0_la66t7xldg4uecmyawueag5wkm
+  cannon: 0.6.2
   clean-webpack-plugin: 4.0.0_webpack@5.75.0
   copy-webpack-plugin: 10.2.4_webpack@5.75.0
   css-loader: 6.7.3_webpack@5.75.0
@@ -2803,6 +2805,10 @@ packages:
 
   /caniuse-lite/1.0.30001446:
     resolution: {integrity: sha512-fEoga4PrImGcwUUGEol/PoFCSBnSkA9drgdkxXkJLsUBOnJ8rs3zDv6ApqYXGQFOyMPsjh79naWhF4DAxbF8rw==}
+    dev: false
+
+  /cannon/0.6.2:
+    resolution: {integrity: sha512-n/7wWSXr8KOSvjad2x0fJHgpMepKjOKi+NdSnjfYyijoDBZnp4JQKgPcpv28jlXoWM+N9zVYU09J0A6Qxx+Y7w==}
     dev: false
 
   /chalk/2.4.2:
