@@ -22,6 +22,8 @@ const scene = new THREE.Scene()
 /// Camera
 const camera = new THREE.PerspectiveCamera(35, aspectRadio, 0.1, 100)
 camera.position.z = 15
+camera.position.y = 15
+camera.position.x = 15
 scene.add(camera)
 
 /// Controls
@@ -29,69 +31,56 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
 
+/// Objects
+const plane = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(10, 10),
+    new THREE.MeshStandardMaterial({
+        color: 0x777777,
+        metalness: 0.3,
+        roughness: 0.4,
+    })
+)
+plane.rotation.x = -Math.PI * 0.5
+scene.add(plane)
+
+
 /// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2)
-directionalLight.position.set(5, 5, -5)
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+directionalLight.position.set(0.25, 3, -2.25)
 directionalLight.shadow.mapSize.set(1024, 1024)
 directionalLight.shadow.camera.far = 15
 directionalLight.shadow.camera.left = - 7
 directionalLight.shadow.camera.top = 7
 directionalLight.shadow.camera.right = 7
 directionalLight.shadow.camera.bottom = - 7
-scene.add(ambientLight, directionalLight)
+scene.add(directionalLight)
 
 
 /// Shadow
+plane.receiveShadow = true
 directionalLight.castShadow = true
 
 
-/// Objects
-const sphere1 = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
-)
-sphere1.position.x = -2
-
-const sphere2 = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
-)
-
-const sphere3 = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 16, 16),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
-)
-sphere3.position.x = 2
-scene.add(sphere1, sphere2, sphere3)
 
 
-let currentIntersect
-/// Raycaster
-const raycaster = new THREE.Raycaster()
 
 
-/// Mouse
-const mouse = new THREE.Vector2()
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX / sizes.width * 2 - 1
-    mouse.y = -1 * e.clientY / sizes.height * 2 + 1
-})
+/// Model
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('/draco/') // Three 中提供了解码的文件
 
-window.addEventListener('click', () => {
-    switch (currentIntersect?.object) {
-        case sphere1:
-            console.log('sphere1')
-            break
-        case sphere2:
-            console.log('sphere2')
-            break
-        case sphere3:
-            console.log('sphere3')
-            break
-        default:
+const gltfLoader = new GLTFLoader()
+
+// 如果加载的内容不是 Draco 文件，那其实该 loader 不会被加载
+gltfLoader.setDRACOLoader(dracoLoader)
+gltfLoader.load(
+    '/models/Hamberger/hamburger.glb',
+    (gltf) => {
+        scene.add(gltf.scene)
     }
-})
+)
+
+
 
 /// Animations
 const clock = new THREE.Clock()
@@ -101,47 +90,6 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - prevElapsedTime
     prevElapsedTime = elapsedTime
-
-
-    sphere1.position.y = Math.sin(elapsedTime * 0.3) * 1.5
-    sphere2.position.y = Math.sin(elapsedTime * 0.8) * 1.5
-    sphere3.position.y = Math.sin(elapsedTime * 1.4) * 1.5
-
-    // const rayOrigin = new THREE.Vector3(-3, 0, 0)
-    // const rayDirection = new THREE.Vector3(10, 0, 0)
-    // rayDirection.normalize()
-    // raycaster.set(rayOrigin, rayDirection)
-
-    const objectsToTest = [sphere1, sphere2, sphere3]
-
-    // const intersect = raycaster.intersectObject(sphere2)
-    // console.log('intersect: ', intersect)
-
-    const intersects = raycaster.intersectObjects(objectsToTest)
-
-    for (const object of objectsToTest) {
-        object.material.color.set(0xff0000)
-    }
-
-    for (const intersect of intersects) {
-        intersect.object.material.color.set(0x0000ff)
-    }
-
-    raycaster.setFromCamera(mouse, camera)
-
-
-    if (intersects.length) {
-        if (!currentIntersect) {
-            currentIntersect = intersects[0]
-            console.log('mouse enter')
-        }
-    } else {
-        if (currentIntersect) {
-            currentIntersect = null
-            console.log('mouse leave')
-        }
-    }
-
 
     controls.update()
     renderer.render(scene, camera)
