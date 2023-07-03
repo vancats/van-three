@@ -1,8 +1,8 @@
-import './style.css'
+import '../../style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import vertexShader from './shaders/03.water/vertex.glsl'
-import fragmentShader from './shaders/03.water/fragment.glsl'
+import vertexShader from './vertex.glsl'
+import fragmentShader from './fragment.glsl'
 import * as dat from 'dat.gui'
 
 const gui = new dat.GUI({ width: 400 })
