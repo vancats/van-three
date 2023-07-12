@@ -18,6 +18,7 @@ specifiers:
   mini-css-extract-plugin: ^2.5.3
   portfinder-sync: 0.0.2
   raw-loader: ^4.0.2
+  stats.js: ^0.17.0
   style-loader: ^3.3.1
   three: ^0.122.0
   vercel: ^28.16.2
@@ -51,6 +52,9 @@ dependencies:
   webpack-cli: 4.10.0_uaydpeuxkjjcxdbyfgk36cjdxi
   webpack-dev-server: 4.11.1_pda42hcaj7d62cr262fr632kue
   webpack-merge: 5.8.0
+
+devDependencies:
+  stats.js: 0.17.0
 
 packages:
 
@@ -6872,6 +6876,10 @@ packages:
     dependencies:
       minipass: 3.3.6
     dev: false
+
+  /stats.js/0.17.0:
+    resolution: {integrity: sha512-hNKz8phvYLPEcRkeG1rsGmV5ChMjKDAWU7/OJJdDErPBNChQXxCo3WZurGpnWc6gZhAzEPFad1aVgyOANH1sMw==}
+    dev: true
 
   /statuses/1.5.0:
     resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
