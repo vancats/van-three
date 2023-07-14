@@ -3,10 +3,6 @@ body {
     padding: 0;
 }
 
-/* html {
-    background: #1e1a20;
-} */
-
 html,
 body {
     overflow: hidden;
@@ -18,6 +14,12 @@ body {
     top: 0;
     outline: none;
 }
+
+/* 12.animation */
+/* html {
+    background: #1e1a20;
+} */
+
 
 .section {
     display: flex;
@@ -33,4 +35,21 @@ body {
 
 section:nth-child(odd) {
     justify-content: flex-end;
+}
+
+.loading-bar {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #FFFFFF;
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.5s;
+    will-change: transform;
+}
+
+.loading-bar.ended {
+    transform-origin: 100% 0;
+    transition: transform 1.5s ease-in-out;
 }
