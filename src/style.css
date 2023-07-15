@@ -37,6 +37,7 @@ section:nth-child(odd) {
     justify-content: flex-end;
 }
 
+/* 21 intro and loader */
 .loading-bar {
     position: absolute;
     top: 50%;
@@ -52,4 +53,54 @@ section:nth-child(odd) {
 .loading-bar.ended {
     transform-origin: 100% 0;
     transition: transform 1.5s ease-in-out;
+}
+
+.point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    font-weight: 100;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.point:hover .text {
+    opacity: 1;
+}
+
+.point .label {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #FFFFFF77;
+    border-radius: 50%;
+    background: #00000077;
+    line-height: 40px;
+    cursor: help;
+    user-select: none;
+    transform: scale(0, 0);
+    transition: transform 0.3s;
+}
+
+.point.visible .label {
+    transform: scale(1, 1);
+}
+
+.point .text {
+    position: absolute;
+    top: 30px;
+    left: -120px;
+    width: 200px;
+    border: 1px solid #FFFFFF77;
+    border-radius: 4px;
+    padding: 20px;
+    background: #00000077;
+    line-height: 1.3em;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
 }
